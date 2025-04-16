@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Image Slider</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="carousel" role="region" aria-label="Image carousel">
+        <canvas id="particle-canvas"></canvas>
+        <div class="list">
+            <div class="item" style="background-image: url(shimla.jpg);">
+                <div class="content">
+                    <div class="title">Explore</div>
+                    <div class="name">Shimla</div>
+                    <div class="des">Shimla, nestled in the majestic Himalayas, is a charming hill station known for its colonial architecture, scenic beauty, and cool climate. Wander along the famous Mall Road, visit the historic Ridge, and soak in panoramic views from Jakhoo Temple. Don't miss the Toy Train ride—a UNESCO heritage experience—or a peaceful walk through pine forests. Whether you're sipping hot tea with a mountain view or shopping in cozy markets, Shimla offers the perfect blend of nature, history, and tranquility.</div>
+                    <div class="btn">
+                        <button class="see-more">Discover Now</button>
+                        <button class="subscribe">Join Us</button>
+                    </div>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(Kashmir.jpg);">
+                <div class="content">
+                    <div class="title">Explore</div>
+                    <div class="name">Kashmir</div>
+                    <div class="des">Kashmir is a breathtaking destination famed for its snow-capped mountains, lush valleys, and crystal-clear lakes. Glide on a shikara across Dal Lake, stay in a charming houseboat, and stroll through the vibrant Mughal Gardens. Adventure lovers can trek in Sonmarg, ski in Gulmarg, or explore the meadows of Pahalgam. With its rich culture, warm hospitality, and mesmerizing landscapes, Kashmir is a soul-soothing escape that feels like heaven on Earth.</div>
+                    <div class="btn">
+                        <button class="see-more">Discover Now</button>
+                        <button class="subscribe">Join Us</button>
+                    </div>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(leh-ladakh.webp);">
+                <div class="content">
+                    <div class="title">Explore</div>
+                    <div class="name">Leh-Ladakh</div>
+                    <div class="des">Leh-Ladakh is a dream destination for adventurers and nature lovers alike. Surrounded by the towering Himalayas, it offers surreal landscapes, ancient monasteries, and crystal-clear skies. Ride through the iconic Khardung La Pass, marvel at the stunning Pangong Lake, and explore the peaceful vibes of Hemis and Thiksey Monasteries. Whether you're biking through rugged terrains or stargazing under the Milky Way, Leh-Ladakh promises a once-in-a-lifetime experience of beauty, culture, and serenity.</div>
+                    <div class="btn">
+                        <button class="see-more">Discover Now</button>
+                        <button class="subscribe">Join Us</button>
+                    </div>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(darjeeling.jpg.webp);">
+                <div class="content">
+                    <div class="title">Explore</div>
+                    <div class="name">Darjeeling</div>
+                    <div class="des">Darjeeling, perched in the foothills of the Himalayas, is a delightful blend of natural beauty, colonial charm, and cultural richness. Wake up to the majestic view of Kanchenjunga, sip world-famous Darjeeling tea straight from the plantations, and enjoy a ride on the historic Darjeeling Himalayan Railway. Don’t miss visiting Tiger Hill for sunrise, exploring the Peace Pagoda, and strolling through bustling local markets. With its cool climate and cozy vibe, Darjeeling is the perfect escape for peace and adventure.</div>
+                    <div class="btn">
+                        <button class="see-more">Discover Now</button>
+                        <button class="subscribe">Join Us</button>
+                    </div>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(varanasi.webp);">
+                <div class="content">
+                    <div class="title">Explore</div>
+                    <div class="name">Varanasi</div>
+                    <div class="des">Varanasi, one of the oldest living cities in the world, is a sacred blend of spirituality, culture, and history. Situated on the banks of the Ganga River, it's famous for its mesmerizing Ganga Aarti at Dashashwamedh Ghat, ancient temples, and vibrant ghats. Take a peaceful boat ride at sunrise, wander through narrow alleys filled with tradition, and experience the spiritual soul of India. In Varanasi, every corner tells a story, and every moment feels timeless.</div>
+                    <div class="btn">
+                        <button class="see-more">Discover Now</button>
+                        <button class="subscribe">Join Us</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="thumbnails">
+            <div class="thumb" data-index="0" style="background-image: url(shimla.jpg);" tabindex="0"></div>
+            <div class="thumb" data-index="1" style="background-image: url(Kashmir.jpg);" tabindex="0"></div>
+            <div class="thumb" data-index="2" style="background-image: url(leh-ladakh.webp);" tabindex="0"></div>
+            <div class="thumb" data-index="3" style="background-image: url(darjeeling.jpg.webp);" tabindex="0"></div>
+            <div class="thumb" data-index="4" style="background-image: url(varanasi.webp);" tabindex="0"></div>
+        </div>
+        <div class="arrows">
+            <button class="prev" aria-label="Previous slide"><</button>
+            <button class="next" aria-label="Next slide">></button>
+        </div>
+        <div class="controls">
+            <button class="pause-play">Pause</button>
+        </div>
+        <div class="timeRunning"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

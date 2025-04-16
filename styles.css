@@ -1,0 +1,366 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #1a1a2e; /* Deep navy for luxury */
+    overflow: hidden;
+    perspective: 1200px; /* Enhanced 3D depth */
+}
+
+#particle-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.5;
+    filter: blur(1.5px); /* Soft glow */
+    animation: pulse 8s ease-in-out infinite; /* Faster pulse for energy */
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.75; }
+}
+
+.carousel {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at center, rgba(60, 60, 90, 0.3), rgba(0, 0, 20, 0.9)); /* Softer gradient */
+}
+
+.carousel .list .item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: 10;
+    transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 1s ease, filter 0.8s ease;
+    opacity: 0;
+    transform: scale(1.1) translateZ(-100px);
+    filter: brightness(0.7) saturate(0.8);
+}
+
+.carousel .list .item.active {
+    opacity: 1;
+    transform: scale(1) translateZ(0);
+    filter: brightness(1.2) saturate(1.3); /* More vibrant */
+    animation: zoomIn 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes zoomIn {
+    from { transform: scale(1.25) translateZ(-200px) translateX(100px); opacity: 0; }
+    to { transform: scale(1) translateZ(0) translateX(0); opacity: 1; }
+}
+
+.carousel .list .item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 20, 0.15), rgba(0, 0, 20, 0.4), rgba(0, 0, 20, 0.8));
+    z-index: 11;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.carousel .list .item:hover::before {
+    opacity: 0.85;
+}
+
+.carousel .list .item .content {
+    position: absolute;
+    top: 50%;
+    left: 10%; /* Shifted to left, but not extreme, for balanced appeal */
+    transform: translateY(-50%) translateZ(60px); /* Maintains 3D pop */
+    z-index: 12;
+    color: #fff;
+    max-width: 600px; /* Narrower for tighter, attractive layout */
+    text-shadow: 0 2px 5px rgba(0, 0, 20, 0.5);
+    text-align: left; /* Aligned left for natural reading */
+}
+
+.carousel .list .item.active .content .title,
+.carousel .list .item.active .content .name,
+.carousel .list .item.active .content .des,
+.carousel .list .item.active .content .btn {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.content .title {
+    font-size: 80px;
+    font-weight: 900;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+    transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
+    color: #ffffff; /* Clean white for simplicity */
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5)); /* Soft white glow */
+}
+
+.content .name {
+    font-size: 50px;
+    font-weight: 700;
+    color: #ffffff; /* Matching white */
+    text-transform: uppercase;
+    margin: 10px 0;
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+    transition: opacity 0.6s ease 0.4s, transform 0.6s ease 0.4s;
+}
+
+.content .des {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+    transition: opacity 0.6s ease 0.6s, transform 0.6s ease 0.6s;
+    color: #e0e0e0; /* Light gray for contrast */
+}
+
+.content .btn {
+    display: flex;
+    gap: 15px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease 0.8s, transform 0.6s ease 0.8s;
+}
+
+.content .btn button {
+    padding: 12px 25px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 30px;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 3px 8px rgba(0, 0, 20, 0.3);
+}
+
+.content .btn .see-more {
+    background: #ff4d80; /* Vibrant pink */
+    color: #fff;
+}
+
+.content .btn .see-more:hover {
+    background: #e04370; /* Darker pink */
+    transform: translateY(-3px) scale(1.06);
+    box-shadow: 0 6px 15px rgba(255, 77, 128, 0.6);
+}
+
+.content .btn .see-more::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    transition: 0.5s;
+}
+
+.content .btn .see-more:hover::after {
+    left: 100%;
+}
+
+.content .btn .subscribe {
+    background: transparent;
+    color: #fff;
+    border: 2px solid #ff4d80;
+}
+
+.content .btn .subscribe:hover {
+    background: #ff4d80;
+    color: #fff;
+    border-color: transparent;
+    transform: translateY(-3px) scale(1.06);
+    box-shadow: 0 6px 15px rgba(255, 77, 128, 0.6);
+}
+
+.thumbnails {
+    position: absolute;
+    bottom: 100px; /* Raised to avoid overlap with arrows */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 100;
+    padding: 12px;
+    background: rgba(20, 20, 50, 0.5);
+    border-radius: 15px;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 4px 12px rgba(0, 0, 20, 0.4);
+}
+
+.thumbnails .thumb {
+    width: 90px;
+    height: 60px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    cursor: pointer;
+    opacity: 0.65;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    border: 2px solid transparent;
+    box-shadow: 0 2px 6px rgba(0, 0, 20, 0.3);
+}
+
+.thumbnails .thumb.active {
+    opacity: 1;
+    transform: scale(1.15);
+    border-color: #ff4d80;
+    box-shadow: 0 6px 15px rgba(255, 77, 128, 0.7);
+}
+
+.thumbnails .thumb:hover,
+.thumbnails .thumb:focus {
+    opacity: 1;
+    transform: scale(1.1);
+    filter: brightness(1.4) saturate(1.3);
+}
+
+.arrows {
+    position: absolute;
+    bottom: 30px; /* Centered at bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px; /* Space between arrows */
+    z-index: 100;
+}
+
+.arrows button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #ff4d80, #40c4ff); /* Vibrant gradient */
+    color: #fff;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 4px 10px rgba(255, 77, 128, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.arrows button:hover {
+    background: linear-gradient(45deg, #40c4ff, #ff4d80);
+    transform: scale(1.15) translateY(-2px);
+    box-shadow: 0 6px 15px rgba(64, 196, 255, 0.6);
+    animation: bounce 0.3s ease;
+}
+
+.arrows button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: 0.5s;
+}
+
+.arrows button:hover::after {
+    left: 100%; /* Shine effect */
+}
+
+@keyframes bounce {
+    0%, 100% { transform: scale(1.15) translateY(-2px); }
+    50% { transform: scale(1.25) translateY(-4px); }
+}
+
+.controls {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    z-index: 100;
+    display: flex;
+    gap: 15px;
+    background: rgba(20, 20, 50, 0.5);
+    padding: 12px;
+    border-radius: 15px;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 4px 12px rgba(0, 0, 20, 0.4);
+}
+
+.controls button {
+    padding: 12px 25px;
+    background: linear-gradient(45deg, #ff4d80, #ff8c66);
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.controls button:hover {
+    background: linear-gradient(45deg, #40c4ff, #ff4d80);
+    transform: translateY(-3px) scale(1.06);
+    box-shadow: 0 6px 15px rgba(64, 196, 255, 0.6);
+}
+
+.timeRunning {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #ff4d80, #40c4ff); /* Matching gradient */
+    z-index: 100;
+    animation: runningTime 6s linear forwards; /* Slightly faster */
+    box-shadow: 0 0 12px rgba(255, 77, 128, 0.7);
+}
+
+@keyframes runningTime {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@media (max-width: 768px) {
+    .content .title { font-size: 60px; }
+    .content .name { font-size: 40px; }
+    .content .des { font-size: 16px; }
+    .content .btn button { padding: 10px 20px; font-size: 14px; }
+    .thumbnails { bottom: 80px; }
+    .thumbnails .thumb { width: 75px; height: 50px; }
+    .arrows button { width: 45px; height: 45px; font-size: 18px; }
+    .controls button { padding: 10px 20px; font-size: 14px; }
+    .content { left: 8%; max-width: 80%; } /* Slightly adjusted for smaller screens */
+}
+
+@media (max-width: 480px) {
+    .content .title { font-size: 40px; }
+    .content .name { font-size: 28px; }
+    .content .des { font-size: 14px; }
+    .content .btn button { padding: 8px 15px; font-size: 13px; }
+    .thumbnails { bottom: 70px; }
+    .thumbnails .thumb { width: 55px; height: 35px; }
+    .arrows button { width: 40px; height: 40px; font-size: 16px; }
+    .controls button { padding: 8px 15px; font-size: 13px; }
+    .content { left: 6%; max-width: 85%; } /* Further adjusted */
+}
